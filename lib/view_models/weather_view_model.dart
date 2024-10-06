@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/database/database_helper.dart';
 import '../config/api_config.dart';
 import 'package:weather_app/models/weather.dart';
 import 'package:http/http.dart' as http;
@@ -13,7 +14,7 @@ class WeatherViewModel extends ChangeNotifier {
   bool get isLoading => _isLoading;
   String get errorMessage => _errorMessage;
 
-  Future<void> fetchWeather(double latitude, double longitude) async {
+  Future<void> fetchWeather(double latitude, double longitude, String city, String country) async {
     _isLoading = true;
     notifyListeners();
 
@@ -25,6 +26,8 @@ class WeatherViewModel extends ChangeNotifier {
       if (response.statusCode == 200) {
         final jsonResponse = json.decode(response.body);
         _weather = Weather.fromJson(jsonResponse);
+
+        await _storeWeatherData(city, country, _weather!);
       } else {
         _errorMessage = 'Error: Unable to fetch weather data';
       }
@@ -34,6 +37,22 @@ class WeatherViewModel extends ChangeNotifier {
       _isLoading = false;
       notifyListeners();
     }
+  }
+
+  Future<void> _storeWeatherData(String city, String country, Weather weather) async {
+    final weatherData = {
+      'city': city,
+      'country': country,
+      'temperature': weather.temperature,
+      'weather_description': weather.description,
+      'timestamp': DateTime.now().microsecondsSinceEpoch
+    };
+
+    await DatabaseHelper().insertWeatherData(weatherData);
+  }
+
+  Future<List<Map<String, dynamic>>> getWeatherHistory() async {
+    return await DatabaseHelper().getWeatherHistory();
   }
 
 }

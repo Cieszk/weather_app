@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/view_models/location_view_model.dart';
 import 'package:weather_app/view_models/weather_view_model.dart';
+import 'package:weather_app/views/weather_history_screen.dart';
 
 class WeatherScreen extends StatefulWidget {
   @override
@@ -50,6 +51,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     await weatherViewModel.fetchWeather(
                       locationViewModel.location!.latitude,
                       locationViewModel.location!.longitude,
+                      city,
+                      country
                     );
                   }
                 } catch (e) {
@@ -96,6 +99,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
               Text(
                   'Sunset: ${DateTime.fromMillisecondsSinceEpoch(weatherViewModel.weather!.sunset * 1000).toLocal()}'),
             ],
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WeatherHistoryScreen()),
+                );
+              },
+              child: Text('View Weather History'),
+),
           ],
         ),
       ),
