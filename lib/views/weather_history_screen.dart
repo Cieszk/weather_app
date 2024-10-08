@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/views/weather_history_detail_screen.dart';
 import '../view_models/weather_history_view_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WeatherHistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final weatherHistoryViewModel = Provider.of<WeatherHistoryViewModel>(context);
+    final localizations = AppLocalizations.of(context);
+
+    String formattedDate = weatherHistoryViewModel.selectedDate != null
+        ? DateFormat.yMMMMd().format(weatherHistoryViewModel.selectedDate!.toLocal())
+        : '';
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Weather History'),
+        title: Text(localizations!.weatherHistory),
         actions: [
           IconButton(
             icon: Icon(Icons.clear),
@@ -27,7 +34,7 @@ class WeatherHistoryScreen extends StatelessWidget {
             TextField(
               controller: weatherHistoryViewModel.cityController,
               decoration: InputDecoration(
-                labelText: 'Filter by City',
+                labelText: localizations.filterByCity,
                 border: OutlineInputBorder(),
               ),
             ),
@@ -36,7 +43,7 @@ class WeatherHistoryScreen extends StatelessWidget {
             TextField(
               controller: weatherHistoryViewModel.countryController,
               decoration: InputDecoration(
-                labelText: 'Filter by Country',
+                labelText: localizations.filterByCountry,
                 border: OutlineInputBorder(),
               ),
             ),
@@ -55,8 +62,8 @@ class WeatherHistoryScreen extends StatelessWidget {
                 }
               },
               child: Text(weatherHistoryViewModel.selectedDate == null
-                  ? 'Pick a Date'
-                  : 'Selected Date: ${weatherHistoryViewModel.selectedDate!.toLocal()}'.split(' ')[0]),
+                  ? localizations.pickDate
+                  : localizations.selectedDate(formattedDate).split(' ')[0]),
             ),
             SizedBox(height: 10),
 
@@ -64,7 +71,7 @@ class WeatherHistoryScreen extends StatelessWidget {
               onPressed: () {
                 weatherHistoryViewModel.notifyListeners();
               },
-              child: Text('Apply Filters'),
+              child: Text(localizations.applyFilters),
             ),
             SizedBox(height: 20),
 
@@ -75,9 +82,9 @@ class WeatherHistoryScreen extends StatelessWidget {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasError) {
-                    return Center(child: Text('Error loading history'));
+                    return Center(child: Text(localizations.errorLoadingHistory));
                   } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                    return Center(child: Text('No weather history available.'));
+                    return Center(child: Text(localizations.noWeatherHistory));
                   } else {
                     final history = snapshot.data!;
                     return ListView.builder(

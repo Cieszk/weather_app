@@ -1,0 +1,134 @@
+{
+  "appTitle": "Weather App",
+  "weatherDetails": "Weather Details",
+  "city": "City",
+  "country": "Country",
+  "temperature": "Temperature",
+  "description": "Description",
+  "date": "Date",
+  "noWeatherHistory": "No weather history available.",
+  "inputLabel": "Enter City, Country",
+  "getWeather": "Get weather",
+  "mainWeather": "Main: {mainWeather}",
+  "weatherDescription": "Description: {description}",
+  "temperatureDetail": "Temperature: {temperature}°C",
+  "feelsLike": "Feels Like: {feelsLike}°C",
+  "humidity": "Humidity: {humidity}%",
+  "windSpeed": "Wind Speed: {windSpeed} m/s",
+  "pressure": "Pressure: {pressure} hPa",
+  "sunrise": "Sunrise: {sunrise}",
+  "sunset": "Sunset: {sunset}",
+  "viewWeatherHisotryButton": "View Weather History",
+  "weatherInLocation": "Weather in {city}, {country}:",
+  "weatherHistory": "Weather History",
+  "filterByCity": "Filter by city",
+  "filterByCountry": "Filter by country",
+  "pickDate": "Pick a Date",
+  "selectedDate": "Selected Date: {selectedDate}",
+  "applyFilters": "Apply Filters",
+  "errorLoadingHistory": "Error loading history",
+
+  "@selectedDate": {
+    "description": "Displays selected date",
+    "placeholders": {
+      "selectedDate":{
+        "type": "String",
+        "description": "Selected date"
+      }
+    }
+  },
+  "@weatherInLocation": {
+    "description": "Displays the weather in a specific city and country.",
+    "placeholders": {
+      "city": {
+        "type": "String",
+        "description": "The name of the city"
+      },
+      "country": {
+        "type": "String",
+        "description": "The name of the country"
+      }
+    }
+  },
+  "@mainWeather": {
+    "description": "Displays the main weather status.",
+    "placeholders": {
+      "mainWeather": {
+        "type": "String",
+        "description": "The main weather condition"
+      }
+    }
+  },
+  "@weatherDescription": {
+    "description": "Displays the weather description.",
+    "placeholders": {
+      "description": {
+        "type": "String",
+        "description": "A description of the weather"
+      }
+    }
+  },
+  "@temperatureDetail": {
+    "description": "Displays the current temperature.",
+    "placeholders": {
+      "temperature": {
+        "type": "String",
+        "description": "The temperature in Celsius"
+      }
+    }
+  },
+  "@feelsLike": {
+    "description": "Displays the 'feels like' temperature.",
+    "placeholders": {
+      "feelsLike": {
+        "type": "String",
+        "description": "The 'feels like' temperature in Celsius"
+      }
+    }
+  },
+  "@humidity": {
+    "description": "Displays the humidity percentage.",
+    "placeholders": {
+      "humidity": {
+        "type": "String",
+        "description": "The humidity percentage"
+      }
+    }
+  },
+  "@windSpeed": {
+    "description": "Displays the wind speed.",
+    "placeholders": {
+      "windSpeed": {
+        "type": "String",
+        "description": "The speed of the wind in meters per second"
+      }
+    }
+  },
+  "@pressure": {
+    "description": "Displays the atmospheric pressure.",
+    "placeholders": {
+      "pressure": {
+        "type": "String",
+        "description": "The atmospheric pressure in hPa"
+      }
+    }
+  },
+  "@sunrise": {
+    "description": "Displays the time of sunrise.",
+    "placeholders": {
+      "sunrise": {
+        "type": "String",
+        "description": "The time of sunrise"
+      }
+    }
+  },
+  "@sunset": {
+    "description": "Displays the time of sunset.",
+    "placeholders": {
+      "sunset": {
+        "type": "String",
+        "description": "The time of sunset"
+      }
+    }
+  }
+}

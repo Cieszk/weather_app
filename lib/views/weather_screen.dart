@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:weather_app/view_models/location_view_model.dart';
 import 'package:weather_app/view_models/weather_view_model.dart';
 import 'package:weather_app/views/weather_history_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WeatherScreen extends StatefulWidget {
   @override
@@ -18,10 +19,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Widget build(BuildContext context) {
     final locationViewModel = Provider.of<LocationViewModel>(context);
     final weatherViewModel = Provider.of<WeatherViewModel>(context);
+    final localizations = AppLocalizations.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Weather App'),
+        title: Text(localizations!.appTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -30,7 +32,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
             TextField(
               controller: _locationController,
               decoration: InputDecoration(
-                labelText: 'Enter City, Country',
+                labelText: localizations.inputLabel,
                 border: OutlineInputBorder(),
               ),
             ),
@@ -44,10 +46,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   city = location[0];
                   country = location[1];
 
-                  // Fetch location coordinates
                   await locationViewModel.fetchCoordinates(city, country);
                   if (locationViewModel.location != null) {
-                    // Fetch weather data using coordinates
                     await weatherViewModel.fetchWeather(
                       locationViewModel.location!.latitude,
                       locationViewModel.location!.longitude,
@@ -61,7 +61,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   );
                 }
               },
-              child: Text('Get Weather'),
+              child: Text(localizations.getWeather),
             ),
             SizedBox(height: 16),
             if (locationViewModel.isLoading || weatherViewModel.isLoading)
@@ -79,26 +79,20 @@ class _WeatherScreenState extends State<WeatherScreen> {
             if (weatherViewModel.weather != null) ...[
               SizedBox(height: 16),
               Text(
-                'Weather in $city, $country:',
+                localizations.weatherInLocation(city, country),
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 8),
-              Text('Main: ${weatherViewModel.weather!.mainWeather}'),
-              Text('Description: ${weatherViewModel.weather!.description}'),
-              Text(
-                  'Temperature: ${weatherViewModel.weather!.temperature.toStringAsFixed(1)}°C'),
-              Text(
-                  'Feels Like: ${weatherViewModel.weather!.temperatureFeelsLike.toStringAsFixed(1)}°C'),
-              Text(
-                  'Humidity: ${weatherViewModel.weather!.humidity.toStringAsFixed(1)}%'),
-              Text(
-                  'Wind Speed: ${weatherViewModel.weather!.windSpeed.toStringAsFixed(1)} m/s'),
-              Text('Pressure: ${weatherViewModel.weather!.pressure} hPa'),
-              Text(
-                  'Sunrise: ${DateTime.fromMillisecondsSinceEpoch(weatherViewModel.weather!.sunrise * 1000).toLocal()}'),
-              Text(
-                  'Sunset: ${DateTime.fromMillisecondsSinceEpoch(weatherViewModel.weather!.sunset * 1000).toLocal()}'),
-            ],
+              Text(localizations.mainWeather(weatherViewModel.weather!.mainWeather)),
+              Text(localizations.weatherDescription(weatherViewModel.weather!.description)),
+              Text(localizations.temperatureDetail(weatherViewModel.weather!.temperature.toStringAsFixed(1))),
+              Text(localizations.feelsLike(weatherViewModel.weather!.temperatureFeelsLike.toStringAsFixed(1))),
+              Text(localizations.humidity(weatherViewModel.weather!.humidity.toStringAsFixed(1))),
+              Text(localizations.windSpeed(weatherViewModel.weather!.windSpeed.toStringAsFixed(1))),
+              Text(localizations.pressure(weatherViewModel.weather!.pressure.toString())),
+              Text(localizations.sunrise(DateTime.fromMillisecondsSinceEpoch(weatherViewModel.weather!.sunrise * 1000).toLocal().toString())),
+              Text(localizations.sunset(DateTime.fromMillisecondsSinceEpoch(weatherViewModel.weather!.sunset * 1000).toLocal().toString())),
+              ],
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -106,7 +100,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   MaterialPageRoute(builder: (context) => WeatherHistoryScreen()),
                 );
               },
-              child: Text('View Weather History'),
+              child: Text(localizations.viewWeatherHisotryButton),
 ),
           ],
         ),

@@ -1,0 +1,134 @@
+{
+  "appTitle": "Aplikacja pogodowa",
+  "weatherDetails": "Szczegóły pogody",
+  "city": "Miasto",
+  "country": "Kraj",
+  "temperature": "Temperatura",
+  "description": "Opis",
+  "date": "Data",
+  "noWeatherHistory": "Brak dostępnej historii pogody.",
+  "inputLabel": "Wprowadź miasto, kraj",
+  "getWeather": "Pobierz pogodę",
+  "mainWeather": "Główna: {mainWeather}",
+  "weatherDescription": "Opis: {description}",
+  "temperatureDetail": "Temperatura: {temperature}°C",
+  "feelsLike": "Odczuwalna: {feelsLike}°C",
+  "humidity": "Wilgotność: {humidity}%",
+  "windSpeed": "Prędkość wiatru: {windSpeed} m/s",
+  "pressure": "Ciśnienie: {pressure} hPa",
+  "sunrise": "Wschód słońca: {sunrise}",
+  "sunset": "Zachód słońca: {sunset}",
+  "viewWeatherHisotryButton": "Wyświetl historyczną pogodę",
+  "weatherInLocation": "Pogoda w {city}, {country}:",
+  "weatherHistory": "Pogoda Historyczna",
+  "filterByCity": "Filtruj po mieście",
+  "filterByCountry": "Filtruj po mieście",
+  "pickDate": "Wybierz datę",
+  "selectedDate": "Wybrana data: {selectedDate}",
+  "applyFilters": "Zastosuj filtry",
+  "errorLoadingHistory": "Error loading history",
+
+  "@selectedDate": {
+    "description": "Wyświetla wybraną datę",
+    "placeholders": {
+      "selectedDate":{
+        "type": "String",
+        "description": "Wybrana data"
+      }
+    }
+  },
+  "@weatherInLocation": {
+    "description": "Wyświetla pogodę w określonym mieście i kraju.",
+    "placeholders": {
+      "city": {
+        "type": "String",
+        "description": "Nazwa miasta"
+      },
+      "country": {
+        "type": "String",
+        "description": "Nazwa kraju"
+      }
+    }
+  },
+  "@mainWeather": {
+    "description": "Wyświetla główny stan pogody.",
+    "placeholders": {
+      "mainWeather": {
+        "type": "String",
+        "description": "Główny warunek pogodowy"
+      }
+    }
+  },
+  "@weatherDescription": {
+    "description": "Wyświetla opis pogody.",
+    "placeholders": {
+      "description": {
+        "type": "String",
+        "description": "Opis warunków pogodowych"
+      }
+    }
+  },
+  "@temperatureDetail": {
+    "description": "Wyświetla bieżącą temperaturę.",
+    "placeholders": {
+      "temperature": {
+        "type": "String",
+        "description": "Temperatura w stopniach Celsjusza"
+      }
+    }
+  },
+  "@feelsLike": {
+    "description": "Wyświetla temperaturę odczuwalną.",
+    "placeholders": {
+      "feelsLike": {
+        "type": "String",
+        "description": "Temperatura odczuwalna w stopniach Celsjusza"
+      }
+    }
+  },
+  "@humidity": {
+    "description": "Wyświetla procent wilgotności.",
+    "placeholders": {
+      "humidity": {
+        "type": "String",
+        "description": "Procent wilgotności"
+      }
+    }
+  },
+  "@windSpeed": {
+    "description": "Wyświetla prędkość wiatru.",
+    "placeholders": {
+      "windSpeed": {
+        "type": "String",
+        "description": "Prędkość wiatru w metrach na sekundę"
+      }
+    }
+  },
+  "@pressure": {
+    "description": "Wyświetla ciśnienie atmosferyczne.",
+    "placeholders": {
+      "pressure": {
+        "type": "String",
+        "description": "Ciśnienie atmosferyczne w hPa"
+      }
+    }
+  },
+  "@sunrise": {
+    "description": "Wyświetla czas wschodu słońca.",
+    "placeholders": {
+      "sunrise": {
+        "type": "String",
+        "description": "Czas wschodu słońca"
+      }
+    }
+  },
+  "@sunset": {
+    "description": "Wyświetla czas zachodu słońca.",
+    "placeholders": {
+      "sunset": {
+        "type": "String",
+        "description": "Czas zachodu słońca"
+      }
+    }
+  }
+}

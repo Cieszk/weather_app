@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WeatherHistoryDetailsScreen extends StatelessWidget {
   final Map<String, dynamic> weatherData;
@@ -7,6 +8,8 @@ class WeatherHistoryDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
+    
     return Scaffold(
       appBar: AppBar(
         title: Text('${weatherData['city']}, ${weatherData['country']}'),
@@ -17,7 +20,7 @@ class WeatherHistoryDetailsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Weather Details',
+              localizations!.weatherDetails,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 16),
